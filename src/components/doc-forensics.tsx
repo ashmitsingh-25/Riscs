@@ -90,13 +90,13 @@ export function DocForensics({ onScanComplete }: DocForensicsProps) {
           {...getRootProps()}
           className={`group flex flex-col items-center justify-center rounded-3xl border-2 border-dashed p-10 md:p-14 text-center cursor-pointer transition-all duration-300 ${
             isDragActive
-              ? "border-black bg-gray-50 scale-[1.01]"
+              ? "border-[#0071e3] bg-[#0071e3]/5 scale-[1.01]"
               : "border-black/10 bg-[#f5f5f7]/40 hover:bg-[#f5f5f7] hover:border-black/20"
           }`}
         >
           <input {...getInputProps()} />
           <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-white shadow-apple-card transition-transform duration-200 group-hover:scale-110">
-            <FileText className="h-8 w-8 text-black" />
+            <FileText className="h-8 w-8 text-[#0071e3]" />
           </div>
           <h4 className="mt-4 text-lg font-bold text-[#1d1d1f]">
             Drop Document, ID Card, Invoice, or Bank Statement
@@ -116,7 +116,7 @@ export function DocForensics({ onScanComplete }: DocForensicsProps) {
             </div>
           ) : (
             <div className="flex h-28 w-28 shrink-0 items-center justify-center rounded-2xl bg-[#f5f5f7] border border-black/10">
-              <FileText className="h-10 w-10 text-black" />
+              <FileText className="h-10 w-10 text-[#0071e3]" />
             </div>
           )}
 

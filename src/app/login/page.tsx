@@ -69,13 +69,13 @@ function LoginForm() {
 
       <CardContent className="space-y-4">
         {/* Quick Demo One-Click Access Button */}
-        <div className="rounded-2xl bg-gray-50 border border-black/10 p-4 space-y-2.5">
+        <div className="rounded-2xl bg-gradient-to-br from-[#0071e3]/10 via-[#0071e3]/5 to-transparent border border-[#0071e3]/20 p-4 space-y-2.5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-black">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#0071e3]">
               <Sparkles className="h-3.5 w-3.5" />
               <span>Instant Demo Access</span>
             </div>
-            <span className="text-[10px] bg-black text-white px-2 py-0.5 rounded-full font-medium">Pre-configured</span>
+            <span className="text-[10px] bg-[#0071e3] text-white px-2 py-0.5 rounded-full font-medium">Pre-configured</span>
           </div>
           <p className="text-[11px] text-[#424245] leading-relaxed">
             One-click bypass to enter the security console immediately with full analyst privileges.
@@ -85,7 +85,7 @@ function LoginForm() {
             variant="default"
             disabled={loading}
             onClick={handleQuickDemoLogin}
-            className="w-full h-11 rounded-full text-xs font-bold bg-black hover:bg-gray-800 text-white shadow-sm flex items-center justify-center gap-2"
+            className="w-full h-11 rounded-full text-xs font-bold bg-[#0071e3] hover:bg-[#0077ed] text-white shadow-sm flex items-center justify-center gap-2"
           >
             {loading ? (
               <>

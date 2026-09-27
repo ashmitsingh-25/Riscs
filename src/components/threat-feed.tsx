@@ -75,7 +75,7 @@ export function ThreatFeed() {
 
       <CardContent>
         {syncStatus && (
-          <div className="mb-4 rounded-2xl bg-gray-100 border border-black/10 p-3 text-xs text-black flex items-center justify-between animate-in fade-in-50">
+          <div className="mb-4 rounded-2xl bg-[#0071e3]/10 border border-[#0071e3]/20 p-3 text-xs text-[#0071e3] flex items-center justify-between animate-in fade-in-50">
             <div className="flex items-center gap-2">
               <Zap className="h-4 w-4" />
               <span>{syncStatus}</span>

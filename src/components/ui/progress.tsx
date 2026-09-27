@@ -17,14 +17,14 @@ const Progress = React.forwardRef<
   const scoreVal = value || 0;
 
   // Apple-style color thresholds: Green < 30, Yellow 30-70, Red > 70
-  let dynamicIndicatorColor = "bg-black";
+  let dynamicIndicatorColor = "bg-[#0071e3]";
   if (autoColorByScore) {
     if (scoreVal < 30) {
-      dynamicIndicatorColor = "bg-cyan-500"; // Safe Cyan
+      dynamicIndicatorColor = "bg-[#30d158]"; // Safe Green
     } else if (scoreVal <= 70) {
-      dynamicIndicatorColor = "bg-violet-500"; // Warning Violet
+      dynamicIndicatorColor = "bg-[#ffd60a]"; // Warning Yellow
     } else {
-      dynamicIndicatorColor = "bg-fuchsia-500"; // Danger Fuchsia
+      dynamicIndicatorColor = "bg-[#ff453a]"; // Danger Red
     }
   }
 

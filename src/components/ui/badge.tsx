@@ -20,7 +20,7 @@ const badgeVariants = cva(
         danger:
           "border-rose-200/80 bg-rose-50 text-rose-700",
         blue:
-          "border-gray-200 bg-gray-50 text-black",
+          "border-blue-200/80 bg-blue-50 text-[#0071e3]",
       },
     },
     defaultVariants: {

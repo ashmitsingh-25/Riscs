@@ -35,14 +35,14 @@ export function ScanHistory({ initialScans = [] }: ScanHistoryProps) {
   const getTypeIcon = (type: ScanType) => {
     switch (type) {
       case "URL":
-        return <Globe className="h-4 w-4 text-black" />;
+        return <Globe className="h-4 w-4 text-[#0071e3]" />;
       case "IMAGE":
       case "VIDEO":
-        return <Video className="h-4 w-4 text-black" />;
+        return <Video className="h-4 w-4 text-purple-600" />;
       case "DOCUMENT":
-        return <FileText className="h-4 w-4 text-black" />;
+        return <FileText className="h-4 w-4 text-amber-600" />;
       case "TRANSACTION":
-        return <CreditCard className="h-4 w-4 text-black" />;
+        return <CreditCard className="h-4 w-4 text-emerald-600" />;
       default:
         return <Globe className="h-4 w-4" />;
     }
@@ -82,8 +82,8 @@ export function ScanHistory({ initialScans = [] }: ScanHistoryProps) {
               onClick={() => setFilterType(opt.value)}
               className={`rounded-full px-3 py-1 text-xs font-semibold transition-all ${
                 filterType === opt.value
-                  ? "bg-black text-white shadow-sm"
-                  : "bg-gray-100 text-gray-500 hover:text-black hover:bg-gray-200"
+                  ? "bg-[#1d1d1f] text-white shadow-sm"
+                  : "bg-[#f5f5f7] text-[#86868b] hover:text-[#1d1d1f] hover:bg-[#e8e8ed]"
               }`}
             >
               {opt.label}
@@ -116,8 +116,8 @@ export function ScanHistory({ initialScans = [] }: ScanHistoryProps) {
                   key={scan.id}
                   className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                     isSelected
-                      ? "border-black shadow-md bg-white ring-1 ring-black"
-                      : "border-black/10 bg-gray-50 hover:bg-white hover:shadow-sm"
+                      ? "border-apple-blue shadow-md bg-white ring-1 ring-apple-blue"
+                      : "border-black/[0.06] bg-[#f5f5f7]/50 hover:bg-white hover:shadow-sm"
                   }`}
                 >
                   <div
@@ -155,8 +155,8 @@ export function ScanHistory({ initialScans = [] }: ScanHistoryProps) {
                       </div>
 
                       <ChevronRight
-                        className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${
-                          isSelected ? "rotate-90 text-black" : ""
+                        className={`h-4 w-4 text-[#86868b] transition-transform duration-200 ${
+                          isSelected ? "rotate-90 text-[#0071e3]" : ""
                         }`}
                       />
                     </div>

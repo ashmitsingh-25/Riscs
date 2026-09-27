@@ -88,7 +88,7 @@ export function MediaScanner({ onScanComplete }: MediaScannerProps) {
   return (
     <div className="space-y-6">
       {/* Zero-Retention Privacy Banner */}
-      <div className="flex items-center justify-between rounded-2xl bg-gray-50 border border-black/10 px-4 py-2.5 text-xs text-black">
+      <div className="flex items-center justify-between rounded-2xl bg-[#0071e3]/5 border border-[#0071e3]/15 px-4 py-2.5 text-xs text-[#0071e3]">
         <div className="flex items-center gap-2">
           <Lock className="h-4 w-4 shrink-0" />
           <span className="font-medium">
@@ -106,13 +106,13 @@ export function MediaScanner({ onScanComplete }: MediaScannerProps) {
           {...getRootProps()}
           className={`group flex flex-col items-center justify-center rounded-3xl border-2 border-dashed p-10 md:p-14 text-center cursor-pointer transition-all duration-300 ${
             isDragActive
-              ? "border-black bg-gray-50 scale-[1.01]"
+              ? "border-[#0071e3] bg-[#0071e3]/5 scale-[1.01]"
               : "border-black/10 bg-[#f5f5f7]/40 hover:bg-[#f5f5f7] hover:border-black/20"
           }`}
         >
           <input {...getInputProps()} />
           <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-white shadow-apple-card transition-transform duration-200 group-hover:scale-110">
-            <UploadCloud className="h-8 w-8 text-black" />
+            <UploadCloud className="h-8 w-8 text-[#0071e3]" />
           </div>
           <h4 className="mt-4 text-lg font-bold text-[#1d1d1f]">
             Drag & drop biometric photo or video
@@ -137,7 +137,7 @@ export function MediaScanner({ onScanComplete }: MediaScannerProps) {
             </div>
           ) : (
             <div className="flex h-32 w-32 shrink-0 items-center justify-center rounded-2xl bg-[#f5f5f7] border border-black/10">
-              <FileVideo className="h-12 w-12 text-black" />
+              <FileVideo className="h-12 w-12 text-[#0071e3]" />
             </div>
           )}
 
