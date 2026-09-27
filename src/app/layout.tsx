@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { Providers } from "@/components/providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,8 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <body className="min-h-screen bg-[#fbfbfd] text-[#1d1d1f] antialiased selection:bg-[#0071e3] selection:text-white flex flex-col">
-        <Navbar />
-        <main className="flex-1">{children}</main>
+        <Providers>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+        </Providers>
         
         {/* Apple-style minimalist Footer */}
         <footer className="border-t border-black/[0.06] bg-[#f5f5f7]/60 py-12 text-xs text-[#86868b]">

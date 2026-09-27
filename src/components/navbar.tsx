@@ -2,11 +2,14 @@
 
 import React from "react";
 import Link from "next/link";
-import { Shield, ShieldAlert, Activity, Lock, ExternalLink } from "lucide-react";
+import { useSession, signOut } from "next-auth/react";
+import { Shield, ShieldAlert, Activity, Lock, ExternalLink, LogOut, UserCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export function Navbar() {
+  const { data: session, status } = useSession();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-black/[0.06] bg-white/70 backdrop-blur-2xl transition-all">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -47,13 +50,13 @@ export function Navbar() {
             Dashboard
           </Link>
           <a
-            href="#scan-hub"
+            href="/#scan-hub"
             className="rounded-full px-4 py-2 text-xs md:text-sm font-medium text-[#86868b] hover:text-[#1d1d1f] hover:bg-black/5 transition-colors"
           >
             Scan Hub
           </a>
           <a
-            href="#threat-feed"
+            href="/#threat-feed"
             className="rounded-full px-4 py-2 text-xs md:text-sm font-medium text-[#86868b] hover:text-[#1d1d1f] hover:bg-black/5 transition-colors"
           >
             Threat Intelligence
@@ -62,13 +65,32 @@ export function Navbar() {
 
         {/* Action Button & User */}
         <div className="flex items-center gap-3">
-          <Link href="/login">
-            <Button variant="secondary" size="sm" className="hidden sm:inline-flex">
-              Sign In
-            </Button>
-          </Link>
-          <a href="#scan-hub">
-            <Button variant="default" size="sm" className="shadow-sm">
+          {status === "authenticated" && session ? (
+            <div className="flex items-center gap-2">
+              <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-[#0071e3]/10 text-[#0071e3] rounded-full text-xs font-semibold">
+                <UserCheck className="h-3.5 w-3.5" />
+                <span className="max-w-[120px] truncate">{session.user?.name || session.user?.email || "Analyst"}</span>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => signOut({ callbackUrl: "/login" })}
+                className="rounded-full h-8 px-3 text-xs text-[#86868b] hover:text-[#ff453a] hover:border-[#ff453a]/30 gap-1.5"
+              >
+                <LogOut className="h-3 w-3" />
+                <span className="hidden sm:inline">Sign Out</span>
+              </Button>
+            </div>
+          ) : (
+            <Link href="/login">
+              <Button variant="secondary" size="sm" className="hidden sm:inline-flex rounded-full">
+                Sign In
+              </Button>
+            </Link>
+          )}
+
+          <a href="/#scan-hub">
+            <Button variant="default" size="sm" className="shadow-sm rounded-full">
               New Inspection
             </Button>
           </a>
