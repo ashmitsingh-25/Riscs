@@ -1,0 +1,2 @@
+# Ignore Python ML backend on Vercel (PyTorch/Transformers exceeds Serverless Function limit)
+backend/
