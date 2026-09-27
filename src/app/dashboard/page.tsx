@@ -7,6 +7,9 @@ import { ShieldCheck, ShieldAlert, Activity, FileCheck, Layers } from "lucide-re
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ScanTaskData } from "@/types";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 // React Server Component fetching initial dashboard metrics and scans
 async function getDashboardData() {
   try {

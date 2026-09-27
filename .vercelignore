@@ -1,2 +1,14 @@
+# Dependencies and build artifacts (never upload these to Vercel)
+node_modules/
+.next/
+.git/
+*.log
+
 # Ignore Python ML backend on Vercel (PyTorch/Transformers exceeds Serverless Function limit)
 backend/
+env/
+venv/
+.venv/
+__pycache__/
+*.pyc
+
