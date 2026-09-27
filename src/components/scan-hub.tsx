@@ -23,8 +23,8 @@ export function ScanHub({ onScanComplete }: ScanHubProps) {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="flex h-2.5 w-2.5 rounded-full bg-[#0071e3]" />
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0071e3]">
+              <span className="flex h-2.5 w-2.5 rounded-full bg-black" />
+              <span className="text-xs font-bold uppercase tracking-wider text-black">
                 Zero-Trust Verification Engine
               </span>
             </div>

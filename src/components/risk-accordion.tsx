@@ -79,7 +79,7 @@ export function RiskAccordion({ flags, engineDetails }: RiskAccordionProps) {
             <AccordionContent className="pb-4 pt-1">
               <div className="rounded-xl bg-[#f5f5f7] p-4 text-xs md:text-sm text-[#424245]">
                 <div className="flex items-start gap-2">
-                  <Info className="h-4 w-4 shrink-0 text-[#0071e3] mt-0.5" />
+                  <Info className="h-4 w-4 shrink-0 text-black mt-0.5" />
                   <div>
                     <strong className="font-semibold text-[#1d1d1f]">
                       Forensic Findings:{" "}
@@ -100,7 +100,7 @@ export function RiskAccordion({ flags, engineDetails }: RiskAccordionProps) {
           >
             <AccordionTrigger className="py-4 hover:no-underline">
               <div className="flex items-center gap-2 text-left">
-                <Sparkles className="h-4 w-4 text-[#0071e3]" />
+                <Sparkles className="h-4 w-4 text-black" />
                 <span className="text-sm font-semibold text-[#1d1d1f]">
                   Technical Engine Diagnostics & RAW Telemetry
                 </span>
