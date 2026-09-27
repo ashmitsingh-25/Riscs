@@ -59,7 +59,7 @@ export default async function DashboardPage() {
       {/* Top Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-[#0071e3]">
+          <span className="text-xs font-bold uppercase tracking-wider text-black">
             Security Operations Center
           </span>
           <h1 className="text-3xl font-extrabold tracking-tight text-[#1d1d1f]">
@@ -76,7 +76,7 @@ export default async function DashboardPage() {
         <Card className="rounded-3xl border border-black/[0.06] bg-white p-6 shadow-apple-card">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-[#86868b]">Total Inspected</span>
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#0071e3]/10 text-[#0071e3]">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gray-100 text-black">
               <Layers className="h-4 w-4" />
             </div>
           </div>
@@ -118,7 +118,7 @@ export default async function DashboardPage() {
             <span className="text-3xl font-extrabold text-[#1d1d1f]">
               {activeIocs > 0 ? activeIocs : 1240}
             </span>
-            <p className="text-[11px] text-[#0071e3] font-semibold mt-1">
+            <p className="text-[11px] text-gray-500 font-semibold mt-1">
               PhishTank & URLhaus synced
             </p>
           </div>

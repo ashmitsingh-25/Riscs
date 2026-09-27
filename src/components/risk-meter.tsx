@@ -23,11 +23,11 @@ export function RiskMeter({
 
   const getIcon = () => {
     if (score < 30) {
-      return <ShieldCheck className="h-6 w-6 text-[#30d158]" />;
+      return <ShieldCheck className="h-6 w-6 text-cyan-500" />;
     } else if (score <= 70) {
-      return <AlertTriangle className="h-6 w-6 text-[#ffd60a]" />;
+      return <AlertTriangle className="h-6 w-6 text-violet-500" />;
     } else {
-      return <AlertOctagon className="h-6 w-6 text-[#ff453a]" />;
+      return <AlertOctagon className="h-6 w-6 text-fuchsia-500" />;
     }
   };
 
@@ -43,10 +43,10 @@ export function RiskMeter({
         <Badge
           className={
             score < 30
-              ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+              ? "bg-cyan-50 text-cyan-700 border-cyan-200"
               : score <= 70
-              ? "bg-amber-50 text-amber-800 border-amber-200"
-              : "bg-rose-50 text-rose-700 border-rose-200"
+              ? "bg-violet-50 text-violet-800 border-violet-200"
+              : "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200"
           }
         >
           {verdict}
@@ -56,7 +56,7 @@ export function RiskMeter({
   }
 
   return (
-    <div className="flex flex-col space-y-4 rounded-3xl border border-black/[0.06] bg-[#f5f5f7]/60 p-6 md:p-8 backdrop-blur-sm">
+    <div className="flex flex-col space-y-4 rounded-3xl border border-black/10 bg-white p-6 md:p-8 shadow-sm">
       {/* Top Header & Big Score */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -68,16 +68,16 @@ export function RiskMeter({
               Overall Risk Assessment
             </span>
             <div className="flex items-center gap-2">
-              <h4 className="text-xl font-bold tracking-tight text-[#1d1d1f]">
+              <h4 className="text-xl font-bold tracking-tight text-black">
                 {verdict.toUpperCase()}
               </h4>
               <Badge
                 className={
                   score < 30
-                    ? "bg-emerald-100 text-emerald-800 border-emerald-300"
+                    ? "bg-cyan-100 text-cyan-800 border-cyan-300"
                     : score <= 70
-                    ? "bg-amber-100 text-amber-900 border-amber-300"
-                    : "bg-rose-100 text-rose-900 border-rose-300"
+                    ? "bg-violet-100 text-violet-900 border-violet-300"
+                    : "bg-fuchsia-100 text-fuchsia-900 border-fuchsia-300"
                 }
               >
                 {theme.label} Risk
@@ -103,10 +103,10 @@ export function RiskMeter({
       {/* Sleek Progress Bar */}
       <div className="space-y-1.5 pt-2">
         <Progress value={score} autoColorByScore className="h-3.5 shadow-inner" />
-        <div className="flex justify-between text-[11px] font-medium text-[#86868b]">
-          <span className="text-emerald-600 font-semibold">0% Safe</span>
-          <span className="text-amber-600 font-semibold">30% - 70% Suspicious</span>
-          <span className="text-rose-600 font-semibold">100% Malicious</span>
+        <div className="flex justify-between text-[11px] font-medium text-gray-500">
+          <span className="text-cyan-600 font-semibold">0% Safe</span>
+          <span className="text-violet-600 font-semibold">30% - 70% Suspicious</span>
+          <span className="text-fuchsia-600 font-semibold">100% Malicious</span>
         </div>
       </div>
 

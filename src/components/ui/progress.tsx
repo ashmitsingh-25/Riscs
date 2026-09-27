@@ -20,11 +20,11 @@ const Progress = React.forwardRef<
   let dynamicIndicatorColor = "bg-[#0071e3]";
   if (autoColorByScore) {
     if (scoreVal < 30) {
-      dynamicIndicatorColor = "bg-[#30d158]"; // Safe Green
+      dynamicIndicatorColor = "bg-cyan-500"; // Safe Cyan
     } else if (scoreVal <= 70) {
-      dynamicIndicatorColor = "bg-[#ffd60a]"; // Warning Yellow
+      dynamicIndicatorColor = "bg-violet-500"; // Warning Violet
     } else {
-      dynamicIndicatorColor = "bg-[#ff453a]"; // Danger Red
+      dynamicIndicatorColor = "bg-fuchsia-500"; // Danger Fuchsia
     }
   }
 

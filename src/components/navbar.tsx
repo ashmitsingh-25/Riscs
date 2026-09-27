@@ -20,8 +20,8 @@ export function Navbar() {
               <Shield className="h-5 w-5 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-tight text-[#1d1d1f]">
-                Trust<span className="text-[#0071e3]">Net</span>
+              <span className="text-lg font-bold tracking-tight text-black">
+                TrustNet
               </span>
               <span className="text-[10px] font-medium tracking-wider text-[#86868b] uppercase -mt-1">
                 Zero-Trust Verification
@@ -30,13 +30,13 @@ export function Navbar() {
           </Link>
 
           {/* Microservice Live Status */}
-          <div className="hidden items-center gap-2 rounded-full border border-black/[0.06] bg-[#f5f5f7]/80 px-3 py-1 md:flex">
+          <div className="hidden items-center gap-2 rounded-full border border-black/10 bg-gray-100 px-3 py-1 md:flex">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#30d158] opacity-75"></span>
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#30d158]"></span>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-black opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-black"></span>
             </span>
-            <span className="text-xs font-medium text-[#1d1d1f]">
-              Inference Engine: <span className="text-emerald-700 font-semibold">Active</span>
+            <span className="text-xs font-medium text-black">
+              Inference Engine: <span className="text-black font-semibold">Active</span>
             </span>
           </div>
         </div>
@@ -67,7 +67,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           {status === "authenticated" && session ? (
             <div className="flex items-center gap-2">
-              <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-[#0071e3]/10 text-[#0071e3] rounded-full text-xs font-semibold">
+              <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-black text-white rounded-full text-xs font-semibold">
                 <UserCheck className="h-3.5 w-3.5" />
                 <span className="max-w-[120px] truncate">{session.user?.name || session.user?.email || "Analyst"}</span>
               </div>
