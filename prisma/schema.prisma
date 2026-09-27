@@ -1,0 +1,144 @@
+// Prisma Schema for TrustNet Platform
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  ANALYST
+  ADMIN
+}
+
+enum ScanType {
+  URL
+  IMAGE
+  VIDEO
+  DOCUMENT
+  TRANSACTION
+}
+
+enum ScanStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum ThreatSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+model User {
+  id            String     @id @default(cuid())
+  name          String?
+  email         String?    @unique
+  emailVerified DateTime?
+  password      String?
+  image         String?
+  role          Role       @default(USER)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  accounts      Account[]
+  sessions      Session[]
+  scans         ScanTask[]
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model ScanTask {
+  id          String      @id @default(cuid())
+  trackingId  String      @unique @default(uuid())
+  type        ScanType
+  status      ScanStatus  @default(PENDING)
+  target      String      @db.Text // URL string, original file name, or transaction ref
+  targetHash  String?     // SHA-256 hash for deduplication/privacy audit
+  metadata    Json?       // Additional request context (e.g. file size, mime type, amount)
+  
+  userId      String?
+  user        User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  riskResult  RiskResult?
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([trackingId])
+  @@index([type])
+  @@index([status])
+}
+
+model RiskResult {
+  id              String    @id @default(cuid())
+  scanTaskId      String    @unique
+  scanTask        ScanTask  @relation(fields: [scanTaskId], references: [id], onDelete: Cascade)
+  
+  score           Float     // 0.0 to 100.0 (Green: <30, Yellow: 30-70, Red: >70)
+  verdict         String    // SAFE, SUSPICIOUS, MALICIOUS
+  suggestedAction String    @db.Text
+  flags           Json      // Array of explainable findings { category, riskLevel, message, evidence }
+  engineDetails   Json?     // Diagnostic metrics (e.g., ELA variance, deepfake prob, whois age)
+
+  createdAt       DateTime  @default(now())
+}
+
+model ThreatLog {
+  id          String         @id @default(cuid())
+  indicator   String         @unique // e.g. domain, ip, sha256 hash, pattern
+  type        String         // DOMAIN, IP, HASH, URL, PATTERN
+  threatType  String         // PHISHING, DEEPFAKE_SIGNATURE, MALWARE_HOST, FRAUD_RING
+  severity    ThreatSeverity @default(MEDIUM)
+  source      String         // e.g. "PhishTank", "URLhaus", "TrustNet-Internal", "Spamhaus"
+  details     Json?          // Associated tags, ASN, Autonomous System, first seen
+  confidence  Float          @default(0.95)
+  isActive    Boolean        @default(true)
+  
+  detectedAt  DateTime       @default(now())
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@index([indicator])
+  @@index([threatType])
+  @@index([severity])
+}
